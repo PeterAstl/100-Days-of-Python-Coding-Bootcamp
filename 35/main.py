@@ -4,6 +4,7 @@ from info import API_KEY
 
 weather = "https://api.openweathermap.org/data/2.5/forecast"
 
+
 weather_params = {
     "appid": API_KEY,
     "lat" : 48.172375,
