@@ -26,31 +26,29 @@ def clicking():
         cookie.click()
         cookie.click()
     check()
-u = False
+
 def check():
     money_driver = driver.find_element(by=By.ID, value = "cookies")
     money = money_driver.text.split()[0]
     money = money.replace(",", "")
     x = 17
     time.sleep(0.3)
+
     while x != -1:
         value = ("productPrice" + str(x))
         try:
             product = driver.find_element(by=By.ID, value=value)
-            product_finish = product.text.replace(",", "")
+            product_finish = product.text.strip()
+            product_finish = product_finish.replace(",", "")
             try:
                 if float(product_finish) <= float(money):
                     driver.find_element(by=By.ID, value=f"product{x}").click()
-            except ValueError:
+            except NoSuchElementException:
                 pass
         except NoSuchElementException:
             pass
         x -= 1
-
-
-
     clicking()
-
 
 clicking()
 
